@@ -23,8 +23,7 @@ If you use the code in this repository, please cite [our paper](https://arxiv.or
 - Ubuntu 24.04.
 - ROS2 Jazzy (EOL 2029) and Gazebo Harmonic
 - ROS-2 Control `sudo apt install ros-jazzy-ros2-control ros-jazzy-ros2-controllers`
-- ROS bridge `sudo apt install ros-jazzy-ros-gz-bridge`
-- Gazebo `sudo apt install ros-jazzy-gz-tools-vendor ros-jazzy-gz-sim-vendor ros-jazzy-gz-gui-vendor`
+
 **If not using local jackal urdf provided**
 - Clearpath package to simulate Jackal UGV, use the following instruction: `sudo apt-get install ros-<distro>-jackal-simulator ros-<distro>-jackal-desktop ros-<distro>-jackal-navigation`. 
 

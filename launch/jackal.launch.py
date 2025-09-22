@@ -10,8 +10,8 @@ from launch.conditions import IfCondition
 def generate_launch_description():
     pkg_share = FindPackageShare('vision_based_navigation_ttt')
     declared_args = [
-        DeclareLaunchArgument('x', default_value='-10.5'),
-        DeclareLaunchArgument('y', default_value='-4.5'),
+        DeclareLaunchArgument('x', default_value='-15'),
+        DeclareLaunchArgument('y', default_value='-4'),
         DeclareLaunchArgument('z', default_value='0'),
         DeclareLaunchArgument('yaw', default_value='0'),
         DeclareLaunchArgument('use_il', default_value='false'),

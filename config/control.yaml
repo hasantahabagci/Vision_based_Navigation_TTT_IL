@@ -8,10 +8,6 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-j100_hardware_interface:
-  ros__parameters:
-    serial_port: /dev/ttyACM0
-
 jackal_velocity_controller:
   ros__parameters:
     left_wheel_names: ["front_left_wheel", "rear_left_wheel"]
@@ -48,9 +44,8 @@ jackal_velocity_controller:
     linear.x.min_velocity: -200.0
     linear.x.max_acceleration: 200.0
 
-    angular.z.has_velocity_limits: true
-    angular.z.has_acceleration_limits: true
-    angular.z.max_velocity: 20.0
-    angular.z.min_velocity: -20.0
+    angular.z.has_velocity_limits: false
+    angular.z.has_acceleration_limits: false
+    angular.z.max_velocity: 200.0
+    angular.z.min_velocity: -200.0
     angular.z.max_acceleration: 200.0
-

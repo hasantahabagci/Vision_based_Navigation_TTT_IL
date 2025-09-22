@@ -171,7 +171,7 @@ class TauComputationClass(Node):
         ######## IMPORTANT PARAMETERS: ########
         # Minimum number of features needed to compute the average TTT for each ROI
         self.min_TTT_number = 10
-        self.image_sub_name = "/camera/image"
+        self.image_sub_name = "camera/image"
         #######################################
 
         # First time that the callback is called

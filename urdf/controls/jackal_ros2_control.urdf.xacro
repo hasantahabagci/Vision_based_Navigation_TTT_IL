@@ -3,96 +3,49 @@
 
   <xacro:macro name="jackal_ros2_control" params="use_gazebo">
 
-    <xacro:if value="${use_gazebo}">
-      <ros2_control name="GazeboSystem" type="system">
-        <hardware>
-          <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-        </hardware>
-        
-        <!-- Define velocity control for all 4 wheels -->
-        <joint name="front_left_wheel">
-          <command_interface name="velocity">
-            <param name="min">-100</param>
-            <param name="max">100</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
+    <ros2_control name="GazeboSystem" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
 
-        <joint name="front_right_wheel">
-          <command_interface name="velocity">
-            <param name="min">-100</param>
-            <param name="max">100</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
+      <!-- Define velocity control for all 4 wheels -->
+      <joint name="front_left_wheel">
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>               <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
 
-        <joint name="rear_left_wheel">
-          <command_interface name="velocity">
-            <param name="min">-100</param>
-            <param name="max">100</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
+      <joint name="front_right_wheel">
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>       
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
 
-        <joint name="rear_right_wheel">
-          <command_interface name="velocity">
-            <param name="min">-100</param>
-            <param name="max">100</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
-      </ros2_control>
-    </xacro:if>
+      <joint name="rear_left_wheel">
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>        
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+     </joint>
 
-    <xacro:unless value="${use_gazebo}">
-      <ros2_control name="JackalSystem" type="system">
-        <hardware>
-          <plugin>jackal_base/JackalSystemHardware</plugin>
-        </hardware>
-        <param name="serial_port">/dev/ttyACM0</param>
+      <joint name="rear_right_wheel">
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>               <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </ros2_control>
 
-        <!-- Define velocity control for all 4 wheels -->
-        <joint name="front_left_wheel">
-          <command_interface name="velocity">
-            <param name="min">-10</param>
-            <param name="max">10</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
+    <!-- 🔧 Add required transmissions for each wheel -->
 
-        <joint name="front_right_wheel">
-          <command_interface name="velocity">
-            <param name="min">-10</param>
-            <param name="max">10</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
-
-        <joint name="rear_left_wheel">
-          <command_interface name="velocity">
-            <param name="min">-10</param>
-            <param name="max">10</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
-
-        <joint name="rear_right_wheel">
-          <command_interface name="velocity">
-            <param name="min">-10</param>
-            <param name="max">10</param>
-          </command_interface>
-          <state_interface name="position"/>
-          <state_interface name="velocity"/>
-        </joint>
-      </ros2_control>
-    </xacro:unless>
 
   </xacro:macro>
 
