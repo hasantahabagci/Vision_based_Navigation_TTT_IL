@@ -22,7 +22,7 @@ def generate_launch_description():
     
     xacro_path = PathJoinSubstitution([pkg_share, 'urdf', 'jackal_gazebo.urdf.xacro'])
     #yaml_file = PathJoinSubstitution([pkg_share, 'config', 'control.yaml'])
-    world_path = PathJoinSubstitution([pkg_share, 'GazeboWorlds', 'corridor_2.sdf'])
+    world_path = PathJoinSubstitution([pkg_share, 'GazeboWorlds', 'corridor_2.world'])
 
     robot_description = ParameterValue(
         Command(['xacro ', xacro_path]),
