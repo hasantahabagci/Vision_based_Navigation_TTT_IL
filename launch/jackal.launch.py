@@ -14,9 +14,6 @@ def generate_launch_description():
         DeclareLaunchArgument('y', default_value='-4'),
         DeclareLaunchArgument('z', default_value='0'),
         DeclareLaunchArgument('yaw', default_value='0'),
-        DeclareLaunchArgument('use_il', default_value='false'),
-        DeclareLaunchArgument('il_policy_path', default_value=PathJoinSubstitution([pkg_share, 'assets', 'il_bc.ts'])),
-        DeclareLaunchArgument('il_stats_path',  default_value=PathJoinSubstitution([pkg_share, 'assets', 'il_bc_stats.json'])),
     ]
 
     
@@ -125,23 +122,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    il_node = Node(
-        package='vision_based_navigation_ttt',
-        executable='il_bc_controller.py',   # we are calling the script directly
-        name='il_bc_controller',
-        output='screen',
-        parameters=[{
-            'tau_topic': '/tau_computation',  # adjust if your topic differs
-            'cmd_vel_topic': 'jackal_velocity_controller/cmd_vel',
-            'policy_path': LaunchConfiguration('il_policy_path'),
-            'stats_path':  LaunchConfiguration('il_stats_path'),
-            'v_fixed': 1.0,
-            'max_u': 1.0,
-            'use_center': False
-        }],
-        condition=IfCondition(LaunchConfiguration('use_il'))
-    )
-
     return LaunchDescription(declared_args + [
         set_gz_plugin_env,
         gz_world,
@@ -153,5 +133,4 @@ def generate_launch_description():
         optical_flow_node,
         tau_node,
         controller_node,
-        il_node,
     ])
