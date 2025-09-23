@@ -48,6 +48,9 @@ install(PROGRAMS
   nodes/optical_flow.py
   nodes/controller.py
   nodes/tau_computation.py
+  nodes/record_il_demos.py
+  nodes/il_bc_controller.py
+  scripts/key_teleop_stamped.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -65,6 +68,7 @@ endif()
 
 install(PROGRAMS
   scripts/move_capsule.py
+  scripts/record_il_demos.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

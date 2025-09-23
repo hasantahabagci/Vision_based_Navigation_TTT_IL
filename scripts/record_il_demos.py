@@ -22,8 +22,8 @@ class ILDemoLogger(Node):
         super().__init__('il_demo_logger')
 
         # ---- Parameters ----
-        self.declare_parameter('tau_topic', '/tau_values')
-        self.declare_parameter('cmd_topic', '/jackal_velocity_controller/cmd_vel')
+        self.declare_parameter('tau_topic', '/tau_computation')
+        self.declare_parameter('cmd_topic', 'jackal_velocity_controller/cmd_vel')
         self.declare_parameter('out_csv',   'assets/il_demos.csv')
         self.declare_parameter('flush_every_n', 5)  # flush every N rows
         self.declare_parameter('min_rows_log', 1)    # print summary every N rows
