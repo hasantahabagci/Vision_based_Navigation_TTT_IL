@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(mobilenettt_visionnavigation)
+project(vision_based_navigation_ttt)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -48,7 +48,6 @@ install(PROGRAMS
   nodes/optical_flow.py
   nodes/controller.py
   nodes/tau_computation.py
-  nodes/road_marker.py 
   DESTINATION lib/${PROJECT_NAME}
 )
 
