@@ -33,7 +33,7 @@ class ILController(Node):
         # --- NEW: Blending factor parameter ---
         # A value of 1.0 means 100% IL model, 0.0 means 100% classical controller.
         # 0.8 is a good starting point, trusting the IL model more.
-        self.alpha = 0.3
+        self.alpha = 0.2
         
         # --- Subscribers ---
         self.subscription_tau = self.create_subscription(
