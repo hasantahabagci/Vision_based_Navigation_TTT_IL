@@ -150,7 +150,7 @@ class Controller(Node):
             msg = TwistStamped()
             msg.twist.linear.x = float(0.3)
             msg.twist.angular.z = float(0)
-            # self.steering_signal.publish(msg)
+            self.steering_signal.publish(msg)
             self.init_cnt += 1
             return
 
@@ -167,7 +167,7 @@ class Controller(Node):
                 msg = TwistStamped()
                 msg.twist.linear.x = float(0.3)
                 msg.twist.angular.z = float(0)
-                # self.steering_signal.publish(msg)
+                self.steering_signal.publish(msg)
 
                 # Data acquisition from TauValues topic
                 final_tau_right_e = data.tau_er
@@ -429,7 +429,7 @@ class Controller(Node):
                 msg.twist.linear.x = float(linear_speed)
                 msg.twist.angular.z = float(angular_speed)
 
-                # self.steering_signal.publish(msg)
+                self.steering_signal.publish(msg)
 
                 self.act_cnt += 1
                 #r_act.sleep()

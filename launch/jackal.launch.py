@@ -7,11 +7,12 @@ from launch_ros.substitutions import FindPackageShare
 from launch_ros.parameter_descriptions import ParameterValue
 from launch.conditions import IfCondition
 
+
 def generate_launch_description():
     pkg_share = FindPackageShare('vision_based_navigation_ttt')
     declared_args = [
-        DeclareLaunchArgument('x', default_value='-15'),
-        DeclareLaunchArgument('y', default_value='-4'),
+        DeclareLaunchArgument('x', default_value='-10.5'),
+        DeclareLaunchArgument('y', default_value='-4.5'),
         DeclareLaunchArgument('z', default_value='0'),
         DeclareLaunchArgument('yaw', default_value='0'),
     ]
@@ -117,10 +118,19 @@ def generate_launch_description():
     controller_node = Node(
         package='vision_based_navigation_ttt',
         executable='controller.py',
-        name='controller',
-        parameters=[{'use_sim_time': True}],
-        output='screen'
+        name='default_controller',
+        output='screen',
+        remappings=[
+            ('/jackal_velocity_controller/cmd_vel', '/default_controller/cmd_vel')
+        ]
     )
+
+    # controller_node = Node(
+    #     package='vision_based_navigation_ttt',
+    #     executable='il_controller.py',
+    #     name='il_controller',
+    #     output='screen'
+    # )
 
     return LaunchDescription(declared_args + [
         set_gz_plugin_env,

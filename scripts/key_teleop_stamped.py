@@ -10,8 +10,8 @@ from geometry_msgs.msg import TwistStamped  # Stamped for Jackal's controller
 
 @dataclass
 class Speeds:
-    linear_x: float = 0.6   # m/s forward/back
-    angular_z: float = 1.0  # rad/s left/right turn
+    linear_x: float = 0.45   # m/s forward/back
+    angular_z: float = 0.4  # rad/s left/right turn
 
 class KeyTeleopStamped(Node):
     def __init__(self,
@@ -25,12 +25,13 @@ class KeyTeleopStamped(Node):
         self.speeds = speeds
         self.frame_id = frame_id
 
-        # Minimal pygame window to capture continuous key state
         pygame.init()
         pygame.display.set_caption('Jackal Key Teleop (hold to move)')
-        # Small hidden-ish window; we still need it focused to read key state
-        self.screen = pygame.display.set_mode((360, 120))
-        self.font = pygame.font.SysFont(None, 22)
+        
+        ### MODIFIED ### - Increased window size for better layout
+        self.screen = pygame.display.set_mode((480, 280)) 
+        self.font = pygame.font.SysFont(None, 24)
+        self.font_small = pygame.font.SysFont(None, 20)
 
         self.last_send = time.time()
         self.timer = self.create_timer(self.dt, self._tick)
@@ -44,13 +45,10 @@ class KeyTeleopStamped(Node):
         v = 0.0
         w = 0.0
 
-        # Forward/back
         if keys[pygame.K_w] or keys[pygame.K_UP]:
             v += self.speeds.linear_x
         if keys[pygame.K_s] or keys[pygame.K_DOWN]:
             v -= self.speeds.linear_x
-
-        # Turning
         if keys[pygame.K_a] or keys[pygame.K_LEFT]:
             w += self.speeds.angular_z
         if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
@@ -66,41 +64,74 @@ class KeyTeleopStamped(Node):
         msg.twist.angular.z = w
         self.pub.publish(msg)
 
-    def _draw(self, v, w):
+    ### MODIFIED ### - The entire draw function is updated for visual feedback
+    def _draw(self, v, w, keys):
         self.screen.fill((245, 245, 245))
+
+        # --- Draw Top Status Text ---
         lines = [
-            "Click this window, then hold keys to move; release to stop.",
-            "W/Up = forward, S/Down = back, A/Left = turn left, D/Right = turn right",
+            "Click window, then hold keys to move. Release to stop.",
             f"lin_x: {v:+.2f} m/s   ang_z: {w:+.2f} rad/s   topic: {self.pub.topic_name}",
             "Press ESC or close window to quit."
         ]
         y = 10
         for text in lines:
-            surf = self.font.render(text, True, (0, 0, 0))
+            surf = self.font_small.render(text, True, (20, 20, 20))
             self.screen.blit(surf, (10, y))
-            y += 24
+            y += 22
+
+        # --- Draw Key Indicators ---
+        KEY_RELEASED_COLOR = (200, 200, 200)
+        KEY_PRESSED_COLOR = (120, 120, 120)
+        KEY_TEXT_COLOR = (0, 0, 0)
+        KEY_SIZE = 50
+        KEY_SPACING = 10
+        
+        # Define keys, their labels, and their screen positions
+        key_map = {
+            'W / ↑': {'keys': (pygame.K_w, pygame.K_UP), 'pos': (KEY_SPACING + KEY_SIZE, 100)},
+            'A / ←': {'keys': (pygame.K_a, pygame.K_LEFT), 'pos': (0, 100 + KEY_SIZE + KEY_SPACING)},
+            'S / ↓': {'keys': (pygame.K_s, pygame.K_DOWN), 'pos': (KEY_SPACING + KEY_SIZE, 100 + KEY_SIZE + KEY_SPACING)},
+            'D / →': {'keys': (pygame.K_d, pygame.K_RIGHT), 'pos': (2 * (KEY_SPACING + KEY_SIZE), 100 + KEY_SIZE + KEY_SPACING)},
+        }
+        
+        # Center the key layout horizontally
+        layout_width = 3 * KEY_SIZE + 2 * KEY_SPACING
+        offset_x = (self.screen.get_width() - layout_width) / 2
+
+        for label, data in key_map.items():
+            is_pressed = keys[data['keys'][0]] or keys[data['keys'][1]]
+            bg_color = KEY_PRESSED_COLOR if is_pressed else KEY_RELEASED_COLOR
+            
+            # Position the rectangle
+            rect = pygame.Rect(data['pos'][0] + offset_x, data['pos'][1], KEY_SIZE, KEY_SIZE)
+            pygame.draw.rect(self.screen, bg_color, rect, border_radius=5)
+            
+            # Render and center the text inside the rectangle
+            text_surf = self.font.render(label.split(' ')[0], True, KEY_TEXT_COLOR) # Just show 'W', 'A', etc.
+            text_rect = text_surf.get_rect(center=rect.center)
+            self.screen.blit(text_surf, text_rect)
+            
         pygame.display.flip()
 
+
     def _tick(self):
-        # Handle window events (close, etc.)
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                rclpy.shutdown()
-                return
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            if event.type == pygame.QUIT or \
+               (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 rclpy.shutdown()
                 return
 
         keys = pygame.key.get_pressed()
         v, w = self._compose_twist(keys)
         self._publish(v, w)
-        self._draw(v, w)
+        
+        ### MODIFIED ### - Pass the `keys` state into the draw function
+        self._draw(v, w, keys)
         self.last_send = time.time()
 
 def main():
     rclpy.init()
-    # Optional CLI overrides:
-    #   python3 key_teleop_stamped.py /jackal_velocity_controller/cmd_vel 30
     topic = sys.argv[1] if len(sys.argv) > 1 else '/jackal_velocity_controller/cmd_vel'
     hz = float(sys.argv[2]) if len(sys.argv) > 2 else 30.0
     node = KeyTeleopStamped(topic=topic, hz=hz)

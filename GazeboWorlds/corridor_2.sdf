@@ -21,67 +21,67 @@
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_1</name>
-      <pose>-10.038372993469238 -3.8466341495513916 5.4130516735639844e-10 2.1206541490252326e-06 1.5700000041757081 0.12000211873844162</pose>
+      <pose>-10 -4.1648713412840879 0 8.7136269718055497e-15 1.5700000000001271 0.1200000000000092</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_0</name>
-      <pose>-8 -2.5464871341284088 0 0 0 -0.099999999999999839</pose>
+      <pose>-8 -2.5464871341284088 0 0 0 -0.09999999999999995</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_2</name>
-      <pose>-9.9604511260986328 -5.9406604766845703 6.1544908058763781e-10 -1.9363875816439034e-06 1.5700000206615896 0.099998020697695783</pose>
+      <pose>-10 -5.5464871341284088 0 3.4854507881111834e-14 1.5699999999998482 0.10000000000003258</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_1</name>
-      <pose>-8 -2.5464871341284092 0 0 0 -0.099999999999999839</pose>
+      <pose>-8 -2.5464871341284092 0 0 0 -0.09999999999999995</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_3</name>
-      <pose>-8.6302528381347656 -3.8574447631835938 5.7211684278968278e-09 1.0958003098836791e-05 1.569999986817564 0.20001096644883182</pose>
+      <pose>-8.5786333084106445 -4.1121068000793457 3.4520042380137284e-09 1.0937034942789963e-05 1.5699999868186794 0.20001098741695814</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_4</name>
-      <pose>-8.5 -5.7000000000000002 0 1.5684528560231228e-13 1.5700000000008241 0.20000000000020018</pose>
+      <pose>-8.5 -5.7000000000000002 0 8.7136269718045787e-14 1.5699999999999876 0.20000000000009185</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_5</name>
-      <pose>-6.2412199974060059 -3.4302835464477539 -6.6557782702147961e-05 -0.17382887039804507 1.5700000221047445 0.29998711472126999</pose>
+      <pose>-6.0625524520874023 -3.7250354290008545 -7.1655348321542078e-11 -4.2510874012037186e-07 1.5699999974886545 0.29999957274806632</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_6</name>
-      <pose>-7 -5.3272486499423009 0 1.5684528560231228e-13 1.5700000000008241 0.20000000000020018</pose>
+      <pose>-7 -5.3272486499423009 0 8.7136269718045787e-14 1.5699999999999876 0.20000000000009185</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_8</name>
-      <pose>-5.5 -5.0060368003071769 0 -3.4854507893327957e-14 1.5700000000004057 0.31999999999997086</pose>
+      <pose>-5.5 -5.0060368003071769 0 6.9709015774443312e-14 1.5700000000001271 0.32000000000002887</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_9</name>
-      <pose>-4.3821420669555664 -2.5582034587860107 -5.177833162228751e-10 -9.5410412013383101e-07 1.570000010088898 0.59999900180862054</pose>
+      <pose>-4 -3.1167804544976141 0 -2.7883606314657933e-13 1.5700000000002665 0.59999999999981679</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_10</name>
-      <pose>-4 -4.3867804544976137 0 -3.4854507936038199e-14 1.5700000000015213 0.50000000000003675</pose>
+      <pose>-3.8878767490386963 -4.5920200347900391 2.7622455434084259e-09 -1.4832525441716731e-05 1.5700000346918532 0.49998516916524893</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_5</name>
-      <pose>-4 -4.786780454497614 0 0 0 0.49999999999999983</pose>
+      <pose>-4 -4.786780454497614 0 0 0 0.49999999999999994</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_2</name>
-      <pose>-8 -5.8899999999999997 0 0 0 -0.099999999999999839</pose>
+      <pose>-8 -5.8899999999999997 0 0 0 -0.09999999999999995</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
@@ -91,12 +91,12 @@
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_11</name>
-      <pose>-2.8410847187042236 -1.4985713958740234 -4.600025915735273e-10 -9.5410412013383101e-07 1.570000010088898 0.59999900180862054</pose>
+      <pose>-2.5 -1.9971276930210149 0 -2.7883606314657933e-13 1.5700000000002665 0.59999999999981679</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_12</name>
-      <pose>-2.5 -3.4971276930210151 0 -3.4854507936038199e-14 1.5700000000015213 0.50000000000003675</pose>
+      <pose>-2.3802700042724609 -3.7163000106811523 2.9497599918215656e-09 -0.065763144152087977 1.5700000219293517 0.50000097523314835</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
@@ -106,162 +106,118 @@
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_13</name>
-      <pose>-1.2478559017181396 -0.34436306357383728 -3.4054609132638802e-10 -9.7423662392384984e-07 1.5700000100940565 0.59999902194059751</pose>
+      <pose>-1 -0.70665334602469387 0 -2.7883606314657933e-13 1.5700000000002665 0.59999999999981679</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_3</name>
-      <pose>2 3.5470917115432528 0 0 0 0.49999999999999983</pose>
+      <pose>2 3.5470917115432528 0 0 0 0.49999999999999994</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_14</name>
-      <pose>-1 -2.8334665397530618 0 -2.0912704750637453e-13 1.5700000000009635 0.59999999999981724</pose>
+      <pose>-1 -2.8334665397530618 0 -2.7883606314657933e-13 1.5700000000002665 0.59999999999981679</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_15</name>
-      <pose>0.091119825839996338 0.65252262353897095 -6.4358447460222123e-09 -1.2721960760345817e-05 1.5699999409674226 0.69998728989613179</pose>
+      <pose>0.5 0.16708323414080001 0 -6.9709015774444827e-14 1.5700000000004057 0.69999999999984897</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_16</name>
-      <pose>0.5 -1.9008329167658593 0 6.9709015811039958e-14 1.5700000000005452 0.90000000000023661</pose>
+      <pose>0.5 -1.9008329167658593 0 -6.9709015750034504e-14 1.5700000000001271 0.89999999999994451</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_17</name>
-      <pose>1.7407228946685791 2.1984739303588867 -8.8741817307891324e-06 -0.058586750988263506 1.5699999937664924 0.49996606183796277</pose>
+      <pose>2 1.7470917115432527 0 -6.9709015786638748e-14 1.5700000000005452 0.49999999999998301</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_18</name>
-      <pose>2 -0.14709171154325271 0 -3.4854507917717248e-13 1.5700000000009635 0.69999999999970408</pose>
+      <pose>2 -0.14709171154325271 0 -6.9709015774444827e-14 1.5700000000004057 0.69999999999984897</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_7</name>
-      <pose>9.5 6.5777416229248047 0 0 0 0</pose>
+      <pose>9.5 6.731500438437072 0 0 0 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_19</name>
-      <pose>3.3397068977355957 3.2392740249633789 -1.8362009135408641e-10 -4.2510856614613236e-07 1.5699999974892123 0.2999995727481482</pose>
+      <pose>3.4826712608337402 2.7771091461181641 -1.9850546553734638e-11 -4.2510874012037186e-07 1.5699999974886545 0.29999957274806632</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_20</name>
-      <pose>3.6418678760528564 0.96140235662460327 3.4950280447532123e-09 -1.4832525275233067e-05 1.5700000346922716 0.49998516916538771</pose>
+      <pose>3.5 1.2210884361884555 0 -6.9709015786638748e-14 1.5700000000005452 0.49999999999998301</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_21</name>
-      <pose>4.9373641014099121 3.8163423538208008 2.7511994904472203e-09 1.0958003098836791e-05 1.569999986817564 0.20001096644883182</pose>
+      <pose>5 3.507354924039483 0 8.7136269718045787e-14 1.5699999999999876 0.20000000000009185</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_8</name>
-      <pose>5.3160948753356934 1.1855010986328125 0 0 0 0.29999998999971877</pose>
+      <pose>5.1330242156982422 1.7773195505142212 0 0 0 0.29999998999971866</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_22</name>
-      <pose>5.1401801109313965 1.7541999816894531 4.5925799274648682e-10 0.075435738812409822 1.5700000072632818 0.30000703915347471</pose>
+      <pose>5 2.2073549240394827 0 3.4854507893320592e-14 1.5700000000004057 0.30000000000003907</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_23</name>
-      <pose>6.5 4.1743302345275879 0 -0.083516183703743502 1.5699999841849814 -1.1339512107723101e-05</pose>
+      <pose>6.5 4.0177909270859651 0 0 1.5699999999998482 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_24</name>
-      <pose>7.0935101509094238 2.356489896774292 -4.1073500156585396e-09 0.28722772946152325 1.5700000075345919 0.2000146336611851</pose>
+      <pose>7 2.8177909270859649 0 8.7136269718045787e-14 1.5699999999999876 0.20000000000009185</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_26</name>
-      <pose>8.0898351669311523 2.0344893932342529 7.1535265306010842e-05 -0.084274217828422968 1.569999971810021 6.3948763301452804e-06</pose>
+      <pose>8 3.0978680152075255 0 0 1.5699999999998482 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_27</name>
-      <pose>8.998417854309082 4.3849716186523438 -0.00039940493297763169 -0.046749686843495279 1.5700000396499292 2.325102922543462e-06</pose>
+      <pose>9.5 4.0331196784973145 0 0 1.5700000042341244 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>tree_9</name>
-      <pose>9.5 1.6375772953033447 0 0 0 0</pose>
+      <pose>9.5 2.68868088722229 0 0 0 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NIST%20maze%20wall%20240</uri>
       <name>wall_28</name>
-      <pose>9.5 2.1375026702880859 0 0 1.5700000042341244 0</pose>
+      <pose>9.5 3.0315004384370718 0 0 1.5699999999998482 0</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>pine_tree_32</name>
-      <pose>4 15 0 0 0 -0.30000000000000066</pose>
+      <pose>-2.1687443256378174 0.84037822484970093 0 0 0 -0.29999998999971866</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>pine_tree_34</name>
-      <pose>-3.5 -0.39712769302101503 0 0 0 0.59999999999999998</pose>
+      <pose>-4.6764459609985352 -1.2019779682159424 0 0 0 0.60000000526754083</pose>
     </include>
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Pine%20Tree</uri>
       <name>pine_tree_36</name>
-      <pose>5.4163603782653809 5.384185791015625 0 0 0 -0.099999998401506626</pose>
+      <pose>5.5 6.2177909270859653 0 0 0 -0.09999999999999995</pose>
     </include>
-    <model name='capsule'>
-      <pose>11.282758756742743 4.3822803368892478 0.49999999993296756 5.2539673238603227e-17 -7.7132841034849224e-10 -2.2042306062451038e-22</pose>
-      <link name='cone_link'>
-        <inertial>
-          <inertia>
-            <ixx>0.074999999999999997</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.074999999999999997</iyy>
-            <iyz>0</iyz>
-            <izz>0.074999999999999997</izz>
-          </inertia>
-          <mass>1</mass>
-          <pose>0 0 0 0 0 0</pose>
-        </inertial>
-        <collision name='cone_collision'>
-          <geometry>
-            <cone>
-              <radius>0.3</radius>
-              <length>1</length>
-            </cone>
-          </geometry>
-          <surface>
-            <friction>
-              <ode/>
-            </friction>
-            <bounce/>
-            <contact/>
-          </surface>
-        </collision>
-        <visual name='cone_visual'>
-          <geometry>
-            <cone>
-              <radius>0.3</radius>
-              <length>1</length>
-            </cone>
-          </geometry>
-          <material>
-            <ambient>0.900000012 0.200000012 0.200000012 1</ambient>
-            <diffuse>0.899999988 0.199999988 0.199999988 1</diffuse>
-            <specular>1 1 1 1</specular>
-          </material>
-        </visual>
-        <pose>0 0 0 0 0 0</pose>
-        <enable_wind>false</enable_wind>
-      </link>
-      <static>false</static>
-      <self_collide>false</self_collide>
-    </model>
+    <include>
+      <uri>file://<urdf-string></uri>
+      <name>jackal</name>
+      <pose>-11.499999999382732 -4.4999999999719291 0.063499226973476763 -2.9083374961138762e-11 9.6127658014813063e-09 -1.1643932865793073e-16</pose>
+    </include>
     <light name='sun' type='directional'>
       <pose>0 0 10 0 0 0</pose>
       <cast_shadows>true</cast_shadows>
@@ -274,25 +230,6 @@
         <linear>0.01</linear>
         <constant>0.90000000000000002</constant>
         <quadratic>0.001</quadratic>
-      </attenuation>
-      <spot>
-        <inner_angle>0</inner_angle>
-        <outer_angle>0</outer_angle>
-        <falloff>0</falloff>
-      </spot>
-    </light>
-    <light name='pointlight' type='point'>
-      <pose>15.071710685766519 5.3461599877210517 2 0 0 0</pose>
-      <cast_shadows>false</cast_shadows>
-      <intensity>1</intensity>
-      <direction>0 0 -1</direction>
-      <diffuse>0.5 0.5 0.5 1</diffuse>
-      <specular>0.5 0.5 0.5 1</specular>
-      <attenuation>
-        <range>4</range>
-        <linear>0.5</linear>
-        <constant>0.20000000000000001</constant>
-        <quadratic>0.01</quadratic>
       </attenuation>
       <spot>
         <inner_angle>0</inner_angle>
