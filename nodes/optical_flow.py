@@ -8,6 +8,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import sys
 import numpy as np
+from scipy.spatial import KDTree
 
 # ROI boundaries
 x_init_el = y_init_el = y_end_el = 0
@@ -36,12 +37,17 @@ def set_limit(img_width, img_height):
     y_init_r = int(1 * img_height / 12)
     y_end_r = int(7 * img_height / 12)
 
-def draw_optical_flow_field(gray_image, points_old, points_new, flow, dt):
+def draw_optical_flow_field(gray_image, points_old, points_new, dynamic_indices):
     color_img = cv2.cvtColor(gray_image, cv2.COLOR_GRAY2BGR)
     for i in range(len(points_new)):
         x0, y0 = int(points_old[i, 0]), int(points_old[i, 1])
         x1, y1 = int(points_new[i, 0]), int(points_new[i, 1])
-        cv2.line(color_img, (x0, y0), (x1, y1), (0, 255, 0), 3)
+        if i in dynamic_indices:
+            # Kırmızı: dinamik özellikler
+            cv2.line(color_img, (x0, y0), (x1, y1), (0, 0, 255), 3)
+        else:
+            # Yeşil: statik özellikler
+            cv2.line(color_img, (x0, y0), (x1, y1), (0, 255, 0), 3)
 
     cv2.imshow('Optical Flow', color_img)
     cv2.waitKey(10)
@@ -61,7 +67,6 @@ class OFCalculator(Node):
         self.num_ext_features = 250
         self.num_cen_features = 150
         self.min_num_features = (2 * self.num_ext_features + self.num_cen_features) / 8
-        #self.min_num_features = 200
         
         self.roi_el = np.array([])
         self.roi_er = np.array([])
@@ -75,6 +80,41 @@ class OFCalculator(Node):
         self.image_sub = self.create_subscription(Image, self.image_sub_name, self.callback, 10)
         self.optic_flow_pub = self.create_publisher(OpticalFlow, "optical_flow", 10)
 
+    def handle_dynamic_features(self, points, flows, radius_thresh=30, flow_rel_diff_thresh=1.5):
+        if len(points) == 0:
+            return np.array([]), []
+
+        corrected_flows = np.copy(flows)
+        dynamic_indices = []
+        
+        tree = KDTree(points)
+        
+        for i, point in enumerate(points):
+            neighbors_indices = tree.query_ball_point(point, r=radius_thresh)
+            if i in neighbors_indices:
+                neighbors_indices.remove(i)
+
+            if not neighbors_indices:
+                continue
+
+            neighbor_flows = flows[neighbors_indices]
+            avg_neighbor_flow = np.mean(neighbor_flows, axis=0)
+            
+            flow = flows[i]
+            flow_diff = np.linalg.norm(flow - avg_neighbor_flow)
+            
+            # --- YENİ MANTIK ---
+            # Sıfıra bölme hatasını önlemek için küçük bir epsilon değeri
+            epsilon = 1e-6 
+            avg_neighbor_flow_magnitude = np.linalg.norm(avg_neighbor_flow) + epsilon
+
+            # Fark, ortalama akışın belirli bir oranından (%50) büyükse dinamik kabul et
+            if flow_diff > avg_neighbor_flow_magnitude * flow_rel_diff_thresh:
+                dynamic_indices.append(i)
+                corrected_flows[i] = avg_neighbor_flow
+
+        return corrected_flows, dynamic_indices
+        
     def callback(self, data):
         self.get_logger().info("Received image")
         try:
@@ -83,7 +123,6 @@ class OFCalculator(Node):
             self.get_logger().error(str(e))
             return
 
-        # Time parsing (ROS 2 Jazzy uses .sec, .nanosec)
         secs = data.header.stamp.sec
         nsecs = data.header.stamp.nanosec
         curr_time = float(secs) + float(nsecs) * 1e-9
@@ -123,8 +162,10 @@ class OFCalculator(Node):
         dt = curr_time - self.prev_time
         flow = good_kps_new - good_kps_old
 
+        corrected_flow, dynamic_indices = self.handle_dynamic_features(good_kps_old, flow)
+
         if self.show == 1:
-            draw_optical_flow_field(curr_image, good_kps_old, good_kps_new, flow, dt)
+            draw_optical_flow_field(curr_image, good_kps_old, good_kps_new, dynamic_indices)
 
         msg = OpticalFlow()
         msg.header.stamp.sec = secs
@@ -134,8 +175,8 @@ class OFCalculator(Node):
         msg.dt = dt
         msg.x = good_kps_old[:, 0]
         msg.y = good_kps_old[:, 1]
-        msg.vx = flow[:, 0] / dt
-        msg.vy = flow[:, 1] / dt
+        msg.vx = corrected_flow[:, 0] / dt
+        msg.vy = corrected_flow[:, 1] / dt
         self.optic_flow_pub.publish(msg)
 
         self.prev_image = curr_image
@@ -161,11 +202,9 @@ class OFCalculator(Node):
 
         if keypoints:
             print(f"[DEBUG] Detected {len(keypoints)} total keypoints.")
-
             pts = cv2.KeyPoint_convert(keypoints)
             return np.float32(pts.reshape(-1, 1, 2))
     
-
         return np.array([], dtype='f')
 
 def main(args=None):

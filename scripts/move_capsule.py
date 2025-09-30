@@ -7,6 +7,7 @@ from ros_gz_interfaces.msg import Entity
 from geometry_msgs.msg import Pose, Point, Quaternion
 import time
 import math
+import numpy as np
 
 class CapsulePatrol(Node):
     """
@@ -30,16 +31,15 @@ class CapsulePatrol(Node):
         self.get_logger().info('Servis bulundu ve hazır!')
         
         # Waypoint'leri tanımlıyoruz (koridor boyunca noktalar)
-        # Dünya dosyanızdaki duvar pozisyonlarına göre ayarlandı
-        self.waypoints = [
+        control_points = [
             (10.0, 3.5, 0.0),    # Başlangıç noktası (mevcut pozisyona yakın)
             (9.0, 3.5, 0.0),     # Sağ taraf
             (8.0, 3.5, 0.0),
             (7.0, 3.5, 0.0),
-            (6.0, 3.0, 0.0),
-            (5.0, 3.0, 0.0),
-            (4.0, 2.0, 0.0),
-            (3.0, 1.5, 0.0),
+            (6.0, 3.5, 0.0),
+            (5.0, 3.5, 0.0),
+            (4.0, 3.0, 0.0),
+            (3.0, 2.5, 0.0),
             (1.0, 1.0, 0.0),
             (0.0, 0.5, 0.0),
             (-1.0, -0.5, 0.0),
@@ -49,10 +49,10 @@ class CapsulePatrol(Node):
             (-5.0, -2.5, 0.0),
             (-6.0, -3.0, 0.0),
             (-7.0, -3.5, 0.0),
-            (-8.0, -3.0, 0.0),
+            (-8.0, -3.5, 0.0),
             (-9.0, -3.5, 0.0),   # Sol uç nokta
         ]
-        
+        self.waypoints = self.generate_spline_path(control_points, points_per_segment=40)
         # Mevcut waypoint indeksi
         self.current_waypoint_index = 0
         
@@ -60,7 +60,7 @@ class CapsulePatrol(Node):
         self.direction = 1
         
         # Hareket hızı parametreleri
-        self.move_interval = 0.5  # Her hareket arasındaki bekleme süresi (saniye)
+        self.move_interval = 0.01  # Her hareket arasındaki bekleme süresi (saniye)
         self.interpolation_steps = 10  # Her iki waypoint arası kaç adım
         
         # Timer oluştur
@@ -73,6 +73,44 @@ class CapsulePatrol(Node):
         self.end_pos = None
         
         self.get_logger().info('Capsule patrol başladı!')
+
+    def generate_spline_path(self, control_points, points_per_segment=20):
+        """
+        Catmull-Rom spline kullanarak kontrol noktalarından yumuşak bir yol oluşturur.
+        """
+        # Kontrol noktalarını numpy dizilerine çevir
+        control_points = np.array(control_points)
+        
+        # Uç durumları yönetmek için başlangıç ve bitiş noktalarını tekrarla
+        padded_points = np.vstack([
+            control_points[0],
+            control_points,
+            control_points[-1]
+        ])
+        
+        spline_points = []
+        
+        # Her segment için spline noktalarını hesapla
+        for i in range(len(padded_points) - 3):
+            p0 = padded_points[i]
+            p1 = padded_points[i+1]
+            p2 = padded_points[i+2]
+            p3 = padded_points[i+3]
+            
+            for t in np.linspace(0, 1, points_per_segment, endpoint=False):
+                # Catmull-Rom spline formülü
+                point = 0.5 * (
+                    (2 * p1) +
+                    (-p0 + p2) * t +
+                    (2 * p0 - 5 * p1 + 4 * p2 - p3) * t**2 +
+                    (-p0 + 3 * p1 - 3 * p2 + p3) * t**3
+                )
+                spline_points.append(tuple(point))
+                
+        # Son noktayı eklediğimizden emin ol
+        spline_points.append(tuple(control_points[-1]))
+        
+        return spline_points
     
     def calculate_rotation(self, current_pos, target_pos):
         """
