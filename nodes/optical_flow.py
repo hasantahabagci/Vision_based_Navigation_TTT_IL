@@ -70,6 +70,7 @@ class OFCalculator(Node):
         self.num_cen_features = 150
         self.min_num_features = (2 * self.num_ext_features + self.num_cen_features) / 8
         #self.min_num_features = 200
+        #self.min_num_features = 200
         
         self.roi_el = np.array([])
         self.roi_er = np.array([])
@@ -83,6 +84,7 @@ class OFCalculator(Node):
         self.image_sub = self.create_subscription(Image, self.image_sub_name, self.callback, 10)
         self.optic_flow_pub = self.create_publisher(OpticalFlow, "optical_flow", 10)
 
+
     def callback(self, data):
         self.get_logger().info("Received image")
         try:
@@ -91,6 +93,7 @@ class OFCalculator(Node):
             self.get_logger().error(str(e))
             return
 
+        # Time parsing (ROS 2 Jazzy uses .sec, .nanosec)
         # Time parsing (ROS 2 Jazzy uses .sec, .nanosec)
         secs = data.header.stamp.sec
         nsecs = data.header.stamp.nanosec
@@ -175,8 +178,11 @@ class OFCalculator(Node):
         if keypoints:
             print(f"[DEBUG] Detected {len(keypoints)} total keypoints.")
 
+
             pts = cv2.KeyPoint_convert(keypoints)
             return np.float32(pts.reshape(-1, 1, 2))
+    
+
     
 
         return np.array([], dtype='f')
