@@ -32,25 +32,27 @@ class CapsulePatrol(Node):
         
         # Waypoint'leri tanımlıyoruz (koridor boyunca noktalar)
         control_points = [
-            (10.0, 3.5, 0.0),    # Başlangıç noktası (mevcut pozisyona yakın)
-            (9.0, 3.5, 0.0),     # Sağ taraf
-            (8.0, 3.5, 0.0),
-            (7.0, 3.5, 0.0),
-            (6.0, 3.5, 0.0),
-            (5.0, 3.5, 0.0),
-            (4.0, 3.0, 0.0),
-            (3.0, 2.5, 0.0),
-            (1.0, 1.0, 0.0),
-            (0.0, 0.5, 0.0),
-            (-1.0, -0.5, 0.0),
-            (-2.0, -1.0, 0.0),
-            (-3.0, -1.5, 0.0),
-            (-4.0, -2.0, 0.0),
-            (-5.0, -2.5, 0.0),
-            (-6.0, -3.0, 0.0),
-            (-7.0, -3.5, 0.0),
-            (-8.0, -3.5, 0.0),
-            (-9.0, -3.5, 0.0),   # Sol uç nokta
+           
+            (11.5, -7.5, 0.0),     # Sağ taraf
+            (11.0, -5.5, 0.0),
+            (10.0, -7.5, 0.0),
+            (9.5, -5.5, 0.0),
+            (8.5, -7.5, 0.0),
+            (8.0, -5.5, 0.0),
+            (7.5, -7.5, 0.0),
+            (7.0, -5.5, 0.0),
+            (6.5, -7.5, 0.0),
+            (6.0, -5.5, 0.0),
+            (5.5, -7.5, 0.0),
+            (5.0, -5.5, 0.0),
+            (4.5, -7.5, 0.0),
+            (4.0, -5.5, 0.0),
+            (3.5, -7.5, 0.0),
+            (3.0, -5.5, 0.0),
+            (2.5, -7.0, 0.0),
+            (2.0, -5.0, 0.0),
+            (1.5, -7.0, 0.0),
+            (1.0, -5.0, 0.0), 
         ]
         self.waypoints = self.generate_spline_path(control_points, points_per_segment=40)
         # Mevcut waypoint indeksi
@@ -60,7 +62,7 @@ class CapsulePatrol(Node):
         self.direction = 1
         
         # Hareket hızı parametreleri
-        self.move_interval = 0.01  # Her hareket arasındaki bekleme süresi (saniye)
+        self.move_interval = 0.007  # Her hareket arasındaki bekleme süresi (saniye)
         self.interpolation_steps = 10  # Her iki waypoint arası kaç adım
         
         # Timer oluştur

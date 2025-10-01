@@ -48,6 +48,7 @@ install(PROGRAMS
   nodes/optical_flow.py
   nodes/controller.py
   nodes/tau_computation.py
+  nodes/dynamic_detection_utils.py  # YENİ
   DESTINATION lib/${PROJECT_NAME}
 )
 
